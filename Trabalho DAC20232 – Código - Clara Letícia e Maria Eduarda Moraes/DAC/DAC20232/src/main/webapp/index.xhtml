@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:f="http://xmlns.jcp.org/jsf/core">
+     
+<h:head><title>Jogo</title></h:head>
+<h:body>
+    <div style="margin: auto; width: 50%; padding: 20px; margin-top:9%;">
+        <h:form id="jogoForm" style="background-color: black;">
+            <p:panel header="CADASTRO DE JOGOS">
+                <p:messages id="messages" showDetail="true" closable="true">
+                    <p:autoUpdate />
+                </p:messages>
+                <p:panelGrid columns="2">
+                    <p:outputLabel for="dataPartida" value="Data da Partida" style="font-weight: bold; color: black;" />
+                    <p:calendar id="dataPartida" value="#{jogoBean.jogo.dataPartida}" showOn="button" 
+                                placeholder="Selecione a Data da Partida" pattern="dd/MM/yyyy" />
+                    
+                    <p:outputLabel for="time1" value="Time 1" style="font-weight: bold; color: black;" />
+                    <p:selectOneMenu id="time1" value="#{jogoBean.jogo.time1}" style="width: 150px;">
+                        <f:selectItem itemValue="A" itemLabel="Time A" />
+                        <f:selectItem itemValue="B" itemLabel="Time B" />
+                        <f:selectItem itemValue="C" itemLabel="Time C" />
+                    </p:selectOneMenu>
+                    
+                    <p:outputLabel for="time2" value="Time 2" style="font-weight: bold; color: black;" />
+                    <p:selectOneMenu id="time2" value="#{jogoBean.jogo.time2}" style="width: 150px;">
+                        <f:selectItem itemValue="A" itemLabel="Time A" />
+                        <f:selectItem itemValue="B" itemLabel="Time B" />
+                        <f:selectItem itemValue="C" itemLabel="Time C" />
+                    </p:selectOneMenu>
+                    
+                    <p:outputLabel for="golsTime1" value="Gols do Time 1" style="font-weight: bold; color: black;" />
+                    <p:inputText id="golsTime1" value="#{jogoBean.jogo.golsTime1}" placeholder="Digite os Gols do Time 1" />
+                    
+                    <p:outputLabel for="golsTime2" value="Gols do Time 2" style="font-weight: bold; color: black;" />
+                    <p:inputText id="golsTime2" value="#{jogoBean.jogo.golsTime2}" placeholder="Digite os Gols do Time 2" />
+                    
+                    <p:commandButton value="Salvar Jogo" action="#{jogoBean.salvarJogo()}" 
+                                     update="messages" icon="pi pi-check" style="background-color: black; color: white; border: 1px solid black;" />
+                    <p:commandButton value="Limpar" type="reset" icon="pi pi-times" style="background-color: black; color: white; border: 1px solid black;" />
+                    <p:button outcome="listagem" value="Ir para Listagem" icon="pi pi-arrow-right" style="background-color: black; color: white; border: 1px solid black;" />
+                </p:panelGrid>
+            </p:panel>
+        </h:form>
+    </div>
+</h:body>
+</html>

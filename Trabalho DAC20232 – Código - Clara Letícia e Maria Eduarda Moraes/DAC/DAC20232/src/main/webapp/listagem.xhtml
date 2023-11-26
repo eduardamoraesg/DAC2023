@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:f="http://xmlns.jcp.org/jsf/core">
+     
+<h:head>
+    <title>Listagem de Jogadas</title>
+</h:head>
+<h:body>
+    <h1>Listagem de Jogadas</h1>
+
+    <h:dataTable value="#{jogoBean.getJogos()}" var="jogo" styleClass="table">
+        <h:column>
+            <f:facet name="header">Time 1</f:facet>
+            #{jogo.time1}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Time 2</f:facet>
+            #{jogo.time2}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Editar</f:facet>
+            <h:commandButton value="Editar" action="#{jogadaBean.editarJogada(jogada)}" style="background-color: blue; color: white;" />
+        </h:column>
+        <h:column>
+            <f:facet name="header">Excluir</f:facet>
+            <h:commandButton value="Excluir" action="#{jogadaBean.excluirJogada(jogada)}" style="background-color: red; color: white;" />
+        </h:column>
+        <!-- <h:column>
+            <f:facet name="header">Resumo</f:facet>
+            <p:commandButton value="Resumo" oncomplete="PF('resumoDialog').show()" style="background-color: green; color: white;">
+                <f:setPropertyActionListener target="#{jogadaBean.jogadaSelecionada}" value="#{jogada}" />
+            </p:commandButton>
+        </h:column> -->
+    </h:dataTable>
+
+    <h:link outcome="index.xhtml" value="Voltar para Cadastro" style="color: black; text-decoration: none; margin-top: 10px; display: block;" />
+
+</h:body>
+</html>
